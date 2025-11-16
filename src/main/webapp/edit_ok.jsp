@@ -28,7 +28,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>지원서 접수 완료</title>
+    <title>지원서 수정 완료</title>
     <style>
         body {
             font-family: 'RoundedFixedsys', monospace;
@@ -50,11 +50,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>감사합니다. 지원서가 성공적으로 접수되었습니다.</h1>
+    <h1>감사합니다. 지원서가 성공적으로 수정되었습니다.</h1>
     <p>곧 연락 드리겠습니다.</p>
     <hr>
 
-    <h2>접수된 지원자 정보</h2>
+    <h2>수정된 지원자 정보</h2>
 
     <p>이름: <span><%= name %></span></p>
     <p>나이: <span><%= age %></span></p>
