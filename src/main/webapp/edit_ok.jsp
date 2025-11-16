@@ -28,7 +28,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>지원서 접수 완료</title>
+    <title>지원서 수정 완료</title>
     <style>
         body {
             font-family: 'RoundedFixedsys', monospace;
