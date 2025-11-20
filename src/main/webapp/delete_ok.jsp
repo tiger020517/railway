@@ -4,6 +4,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
   Map<String, String> data = new HashMap<>();
+  data.put("id", request.getParameter("id"));
   data.put("name", request.getParameter("name"));
   data.put("age", request.getParameter("age"));
   data.put("contact", request.getParameter("contact"));
@@ -15,6 +16,6 @@
   data.put("health", request.getParameter("health"));
   data.put("date", request.getParameter("date"));
 
-  Repository.add(data);
+  Repository.update(data);
   response.sendRedirect("list.jsp");
 %>

@@ -7,18 +7,24 @@ public class Repository {
 	private static int sequence = 1;
 
 	static {
-		add("김준형", "신장", "010-1234-5678");
-		add("홍길동", "간", "010-9876-5432");
+		Map<String, String> m = new HashMap<>();
+		m.put("id", String.valueOf(sequence++));
+		m.put("name", "김준형");
+		m.put("age", "24");
+		m.put("contact", "010-1234-5678");
+		m.put("height", "175");
+		m.put("weight", "70");
+		m.put("blood_type", "A");
+		m.put("smoker", "yes");
+		m.put("organ", "신장");
+		m.put("health", "매우 건강함");
+		m.put("date", "2025-11-25");
+		dataList.add(m);
 	}
 
-	public static void add(String name, String organ, String contact) {
-		Map<String, String> map = new HashMap<>();
-		map.put("id", String.valueOf(sequence++));
-		map.put("name", name);
-		map.put("organ", organ);
-		map.put("contact", contact);
-		map.put("date", new java.util.Date().toString());
-		dataList.add(map);
+	public static void add(Map<String, String> data) {
+		data.put("id", String.valueOf(sequence++));
+		dataList.add(data);
 	}
 
 	public static List<Map<String, String>> getAll() {
@@ -36,12 +42,10 @@ public class Repository {
 		dataList.removeIf(m -> m.get("id").equals(id));
 	}
 
-	public static void update(String id, String name, String organ, String contact) {
-		Map<String, String> m = getById(id);
-		if (m != null) {
-			m.put("name", name);
-			m.put("organ", organ);
-			m.put("contact", contact);
+	public static void update(Map<String, String> newData) {
+		Map<String, String> oldData = getById(newData.get("id"));
+		if (oldData != null) {
+			oldData.putAll(newData);
 		}
 	}
 }
