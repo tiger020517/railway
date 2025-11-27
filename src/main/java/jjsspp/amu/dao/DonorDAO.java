@@ -124,4 +124,27 @@ public class DonorDAO {
 		finally { JDBCUtil.close(conn, stmt, rs); }
 		return list;
 	}
+	public List<DonorVO> getDonorList(String keyword) {
+		List<DonorVO> list = new ArrayList<DonorVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			// 이름(name)에 검색어가 포함된 사람만 조회
+			String sql = "select * from donors where name like ? order by sid desc";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%" + keyword + "%");
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				DonorVO vo = new DonorVO();
+				vo.setSid(rs.getInt("sid"));
+				vo.setName(rs.getString("name"));
+				vo.setOrgan(rs.getString("organ"));
+				vo.setContact(rs.getString("contact"));
+				vo.setBlood_type(rs.getString("blood_type"));
+				vo.setRegdate(rs.getTimestamp("regdate"));
+				list.add(vo);
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		finally { JDBCUtil.close(conn, stmt, rs); }
+		return list;
+	}
 }
